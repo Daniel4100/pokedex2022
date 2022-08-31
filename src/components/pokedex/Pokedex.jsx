@@ -40,7 +40,7 @@ const Pokedex = () => {
 
   const getAllPokemon = () => {
     if (filterType === "All Pokemons") {
-      const URL = "https://pokeapi.co/api/v2/pokemon";
+      const URL = "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0";
       axios
         .get(URL)
         .then((res) => setPokemons(res.data.results))
@@ -157,23 +157,24 @@ const Pokedex = () => {
         setFilterPokeSearch={setFilterPokeSearch}
         setCurrentPage={setCurrentPage}
       />
-      <motion.div >
-        {arrayPokemonsPaged && (
-          <motion.div variants={container} initial="hidden"
-          animate="show" className="pokemons__container">
-            {arrayPokemonsPaged.map((pokemon) => (
-              <PokeCard item={item} key={pokemon.url} url={pokemon.url} />
-            ))}
-          </motion.div>
-        )}
-      </motion.div>
-
       <Pagination
         arrayPages={arrayPages}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         quantityPages={quantityPages}
       />
+      <motion.div >
+        {arrayPokemonsPaged && (
+          <motion.div variants={container} initial="hidden"
+          animate="show" className="pokemons__container">
+            {arrayPokemonsPaged.map((pokemon) => (
+              <PokeCard  item={item} key={pokemon.url} url={pokemon.url} />
+            ))}
+          </motion.div>
+        )}
+      </motion.div>
+
+      
     </div>
   );
 };

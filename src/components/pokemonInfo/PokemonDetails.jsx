@@ -1,26 +1,101 @@
 import axios from "axios";
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const PokemonDetails = () => {
   const [pokemon, setPokemon] = useState();
+  const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate()
 
   const { name } = useParams();
+
   useEffect(() => {
     const URL = `https://pokeapi.co/api/v2/pokemon/${name}/`;
     axios
       .get(URL)
-      .then((res) => setPokemon(res.data))
+      .then((res) => {setPokemon(res.data)
+      setLoading(false)})
       .catch((err) => console.log(err));
   }, []);
 
   return (
-    <div>
-      {name}
-      <button onClick={() => navigate(-1)}> voler</button>
-    </div>
+    <motion.div layout  whileHover={{scale: 1.06}}  className="container">
+      <span className="pokemon-id">
+            #<b>{pokemon?.id}</b>
+          </span>
+      <motion.div  className="card">
+        <div className={`card__head`}>
+          
+          
+          <div className='card__headimagecontainer'>
+            
+            <div className={`bg bg${pokemon?.types[0].type.name}`}></div>
+            {loading ? (
+              <img
+                src={`./media/pokeball.png`}
+                className="loader"
+                alt="loader"
+              />
+            ) : (
+              <img
+                src={pokemon?.sprites.other["official-artwork"].front_default ? (pokemon?.sprites.other["official-artwork"].front_default) : './media/imageNotFound.png' }
+                className="pokemon-img"
+                alt="logo"
+              />
+            )}
+          </div>
+        </div>
+        <div className="card-body">
+          <div className="pokemon-title">
+            <h4>{pokemon?.name}</h4>
+          </div>
+          <div className="pokemon-properties">
+              
+            <div className="product-stats">
+              <h4>stats</h4>
+              <div className="stats-container">
+                <div className="card__stats">
+                  <p className="card__number">{pokemon?.stats[0].base_stat}</p>
+                  <p className="card__text">HP</p>
+                </div>
+                <div className="card__stats">
+                  <p className="card__number">{pokemon?.stats[1].base_stat}</p>
+                  <p className="card__text">ATTACK</p>
+                </div>
+                <div className="card__stats">
+                  <p className="card__number">{pokemon?.stats[2].base_stat}</p>
+                  <p className="card__text">DEFENSE</p>
+                </div>
+                <div className="card__stats">
+                  <p className="card__number">{pokemon?.stats[4].base_stat}</p>
+                  <p className="card__text">SPEED</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="container-icons__padre">
+            {pokemon?.types.map((type) => (
+              <motion.div whileHover={{scale: 1.04 }} key={type.type.url} className="container-icons">
+                <motion.div   className={`bgicon `}>
+                  <img
+                  src={`./media/${type.type.name}.svg`}
+                  className={`icon ${type.type.name}`}
+                  alt={type.type.name}
+                />
+                </motion.div>
+                
+
+                <div className="container-icons_span">
+                  <span>{type.type.name}</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
