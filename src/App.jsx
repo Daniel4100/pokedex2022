@@ -19,6 +19,7 @@ function App() {
           <Route path="/pokedex" element={<Pokedex/>}/>
           <Route path="/pokedex/:name" element={<PokemonDetails/>}/>
         </Route>
+        <Route path="*" element={<h1>page not found</h1>}/>
       </Routes>
     </div>
   );

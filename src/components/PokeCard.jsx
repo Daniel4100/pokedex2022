@@ -3,13 +3,13 @@ import axios from "axios";
 import {useNavigate} from "react-router"
 import {motion} from 'framer-motion'
 
-const PokeCard = ({ url }) => {
+const PokeCard = ({ url, item }) => {
   const [pokemon, setPokemon] = useState();
   const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate()
 
-  console.log(pokemon?.stats)
+  
 
   useEffect(() => {
     axios
@@ -18,7 +18,7 @@ const PokeCard = ({ url }) => {
         setPokemon(res.data);
         setTimeout(() => {
           setLoading(false);
-        }, 2000);
+        }, 3000);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -26,10 +26,11 @@ const PokeCard = ({ url }) => {
   const handleClicks = () => navigate(`/pokedex/${pokemon?.name}`)
   // console.log(pokemon)
   return (
-    <div onClick={handleClicks} className="container"><span className="pokemon-id">
+    <motion.div variants={item} whileHover={{scale: 1.06}} onClick={handleClicks} className="container">
+      <span className="pokemon-id">
             #<b>{pokemon?.id}</b>
           </span>
-      <div className="card">
+      <motion.div  className="card">
         <div className={`card__head`}>
           
           
@@ -81,8 +82,8 @@ const PokeCard = ({ url }) => {
           </div>
           <div className="container-icons__padre">
             {pokemon?.types.map((type) => (
-              <div key={type.type.url} className="container-icons">
-                <motion.div whileHover={{scale: 1.1}} className={`bgicon `}>
+              <motion.div whileHover={{scale: 1.04 }} key={type.type.url} className="container-icons">
+                <motion.div   className={`bgicon `}>
                   <img
                   src={`./media/${type.type.name}.svg`}
                   className={`icon ${type.type.name}`}
@@ -94,12 +95,12 @@ const PokeCard = ({ url }) => {
                 <div className="container-icons_span">
                   <span>{type.type.name}</span>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

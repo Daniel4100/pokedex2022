@@ -1,22 +1,27 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-import {useParams} from 'react-router-dom'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 const PokemonDetails = () => {
-  const [pokemon, setPokemon] = useState()
+  const [pokemon, setPokemon] = useState();
 
-  const {name} = useParams()
+  const navigate = useNavigate()
+
+  const { name } = useParams();
   useEffect(() => {
-    const URL = `https://pokeapi.co/api/v2/pokemon/${name}/`
-    axios.get(URL)
-    .then(res => setPokemon(res.data))
-    .catch(err => console.log(err))
+    const URL = `https://pokeapi.co/api/v2/pokemon/${name}/`;
+    axios
+      .get(URL)
+      .then((res) => setPokemon(res.data))
+      .catch((err) => console.log(err));
+  }, []);
 
-  }, [])
-  
   return (
-    <div>{name}</div>
-  )
-}
+    <div>
+      {name}
+      <button onClick={() => navigate(-1)}> voler</button>
+    </div>
+  );
+};
 
-export default PokemonDetails
+export default PokemonDetails;

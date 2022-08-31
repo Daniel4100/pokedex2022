@@ -4,11 +4,11 @@ import {useSelector} from 'react-redux'
 
 const ProtectedRoutes = () => {
 
-  const nameTrainer = useSelector(state => state.nameTrainerSlice)
+  let name = localStorage.getItem('name')
 
-  
+  console.log(name)
 
-  if(nameTrainer != '') {
+  if(name) {
     return <Outlet />
   } else {
     return <Navigate to='/' />
