@@ -135,6 +135,9 @@ body{
   width: 140px;
   height: 110px;
 }
+.pokedex__form{
+  margin-bottom: 3em;
+}
 .card{
   width: 100%;
   height: 100%;
@@ -322,10 +325,11 @@ body{
 .pokemon-id{
   position: absolute;
   background-color: aqua;
-  padding: 0em 1em;
-  left:-15px;
+  padding: 0em .5em;
+  left:-10px;
   top: 10px;
   z-index: 100;
+  font-size: .7rem;
 }
 .pokemon-img, .loader{
   height: 100%;

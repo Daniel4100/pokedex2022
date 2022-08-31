@@ -17,7 +17,7 @@ const PokedexForm = ({types, setFilterType, setPokesearch, pokesearch, setFilter
 
   
   return (
-    <form >
+    <form className='pokedex__form' >
         <input id="input" value={pokesearch} type="text" onChange={inputChangue} />
         <select name="" id="" onChange={selectChangue}>
             {/* {
