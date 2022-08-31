@@ -8,18 +8,19 @@ import PokedexForm from "./PokedexForm";
 import SelecForm from "./SelecForm";
 import Welcome from "./Welcome";
 import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
 
 const Pokedex = () => {
   const [pokemons, setPokemons] = useState();
   const [types, setTypes] = useState();
-  const [filterType, setFilterType] = useState("All Pokemons");
+  // const [filterType, setFilterType] = useState("All Pokemons");
   const [pokesearch, setPokesearch] = useState();
   const [filterPokeSearch, setFilterPokeSearch] = useState("");
   const [arrayPokemons, setArrayPokemons] = useState();
   //pagination
   const [arrayPokemonsPaged, setArrayPokemonsPaged] = useState([]);
   const [pokemonsPerPage, setPokemonsPerPage] = useState(8);
-  const [currentPage, setCurrentPage] = useState(1);
+  // const [currentPage, setCurrentPage] = useState(1);
   //configurations
   const [configurations, setConfigurations] = useState(false);
 
@@ -38,6 +39,8 @@ const Pokedex = () => {
     show: { opacity: 1,},
   };
 
+  const filterType = useSelector(state => state.typeSlice)
+
   const getAllPokemon = () => {
     if (filterType === "All Pokemons") {
       const URL = "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0";
@@ -55,6 +58,7 @@ const Pokedex = () => {
         .catch((err) => console.log(err));
     }
   };
+  console.log(filterType)
 
   const getTypes = () => {
     const URL = "https://pokeapi.co/api/v2/type";
@@ -71,7 +75,7 @@ const Pokedex = () => {
 
   useEffect(() => {
     getAllPokemon();
-    setPokesearch("");
+    // setPokesearch("");
   }, [filterType]);
 
   useEffect(() => {
@@ -96,6 +100,7 @@ const Pokedex = () => {
   }, [pokemons, filterPokeSearch]);
 
   //pagination
+  const currentPage = useSelector(state => state.currentPageSlice)
 
   let arrayPages = [];
   let quantityPages = Math.ceil(arrayPokemons?.length / pokemonsPerPage);
@@ -143,7 +148,7 @@ const Pokedex = () => {
           <SelecForm
             setPokemonsPerPage={setPokemonsPerPage}
             getAllPokemon={getAllPokemon}
-            setCurrentPage={setCurrentPage}
+            // setCurrentPage={setCurrentPage}
           />
           <Logout />
         </article>
@@ -151,16 +156,15 @@ const Pokedex = () => {
 
       <PokedexForm
         types={types}
-        setFilterType={setFilterType}
+        // setFilterType={setFilterType}
         setPokesearch={setPokesearch}
         pokesearch={pokesearch}
         setFilterPokeSearch={setFilterPokeSearch}
-        setCurrentPage={setCurrentPage}
       />
       <Pagination
         arrayPages={arrayPages}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
+        // currentPage={currentPage}
+        // setCurrentPage={setCurrentPage}
         quantityPages={quantityPages}
       />
       <motion.div >

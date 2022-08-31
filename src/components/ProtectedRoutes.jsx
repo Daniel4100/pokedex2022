@@ -6,7 +6,6 @@ const ProtectedRoutes = () => {
 
   let name = localStorage.getItem('name')
 
-  console.log(name)
 
   if(name) {
     return <Outlet />

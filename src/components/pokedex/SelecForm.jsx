@@ -1,11 +1,15 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import {getCurrent} from '../../store/slices/currentPage.slice'
 
-const SelecForm = ({ setPokemonsPerPage, getAllPokemon, setCurrentPage }) => {
+const SelecForm = ({ setPokemonsPerPage, getAllPokemon}) => {
+
+  const dispatch = useDispatch()
 
   
   const onregister = (data) => {
     setPokemonsPerPage(data.target.value);
-    setCurrentPage(1)
+    dispatch(getCurrent(1))
     getAllPokemon();
   };
 

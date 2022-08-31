@@ -442,8 +442,13 @@ h4{
   gap: 20px;
   list-style: none;
   align-items: center;
+  color: white;
 }
 .page-active{
+  background-color: red;
+  padding: 0 .7em;
+}
+.pagination-prev-next{
   background-color: red;
   padding: 0 .7em;
 }
@@ -472,6 +477,9 @@ h4{
   }
   .pokemon-img{
     height: 100%
+  }
+  .pokemon-img, .loader{
+    top: 1em;
   }
   .card-body{
     height: 70%;

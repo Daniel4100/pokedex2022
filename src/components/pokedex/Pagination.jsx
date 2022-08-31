@@ -1,24 +1,30 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import {getCurrent} from '../../store/slices/currentPage.slice'
 
-const Pagination = ({arrayPages, currentPage, setCurrentPage, quantityPages}) => {
+const Pagination = ({arrayPages,  quantityPages}) => {
+
+  const currentPage = useSelector(state => state.currentPageSlice)
+
+  const dispatch = useDispatch()
 
     const prevPage = () => {
         if(currentPage - 1 === 0) {
-          setCurrentPage(quantityPages)
+          dispatch(getCurrent(quantityPages))
         } else {
-          setCurrentPage(currentPage - 1)
+          dispatch(getCurrent(currentPage - 1))
         }
       }
     
       const nextPage = () => {
         if(currentPage + 1 > quantityPages) {
-          setCurrentPage(1)
+          dispatch(getCurrent(1))
         } else {
-          setCurrentPage(currentPage + 1)
+          dispatch(getCurrent(currentPage + 1))
         }
       }
 
-      const changePageTo = n => setCurrentPage(n)
+      const changePageTo = n => dispatch(getCurrent(n))
 
   return (
     <div className='pagination-container'>
