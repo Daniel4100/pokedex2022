@@ -149,6 +149,9 @@ body{
 .container:hover .pokemon-img{
   transform: scale(1.2);
 }
+.container:hover{
+  transform: scale(1.06)
+}
 
 .card__head{
   width: 100%;
@@ -346,7 +349,6 @@ body{
   overflow: hidden;
   position: relative;
   color: white;
-  backdrop-filter: blur(15px);
   display: flex;
   gap: .3em;
   align-items: center;

@@ -26,7 +26,7 @@ const PokeCard = ({ url, item }) => {
   const handleClicks = () => navigate(`/pokedex/${pokemon?.name}`)
   // console.log(pokemon)
   return (
-    <motion.div variants={item} whileHover={{scale: 1.06}} onClick={handleClicks} className="container">
+    <motion.div layout variants={item} whileHover={{scale: 1.06}} onClick={handleClicks} className="container">
       <span className="pokemon-id">
             #<b>{pokemon?.id}</b>
           </span>
