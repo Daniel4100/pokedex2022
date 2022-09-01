@@ -23,7 +23,7 @@ const PokeCard = ({ url, item }) => {
       .catch((err) => console.log(err));
   }, []);
 
-  const handleClicks = () => navigate(`/pokedex/${pokemon?.name}`)
+  const handleClicks = () => navigate(`/pokedex/${pokemon?.name}/about`)
   // console.log(pokemon)
   return (
     <motion.div layout variants={item} whileHover={{scale: 1.06}} onClick={handleClicks} className="container">

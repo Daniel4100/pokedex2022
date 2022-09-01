@@ -9,6 +9,7 @@ import SelecForm from "./SelecForm";
 import Welcome from "./Welcome";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
+import Toogle from "./Toogle";
 
 const Pokedex = () => {
   const [pokemons, setPokemons] = useState();
@@ -138,21 +139,9 @@ const Pokedex = () => {
 
   return (
     <div className="pokedex-father">
-      <Header />
+      <Header  />
       <Welcome />
-      <button onClick={handleClickConfigurations} className="configurations">
-        configurations
-      </button>
-      {configurations && (
-        <article className="configurations__toggle">
-          <SelecForm
-            setPokemonsPerPage={setPokemonsPerPage}
-            getAllPokemon={getAllPokemon}
-            // setCurrentPage={setCurrentPage}
-          />
-          <Logout />
-        </article>
-      )}
+      
 
       <PokedexForm
         types={types}
@@ -177,7 +166,7 @@ const Pokedex = () => {
           </motion.div>
         )}
       </motion.div>
-
+      <Toogle handleClickConfigurations={handleClickConfigurations} configurations={configurations} setPokemonsPerPage={setPokemonsPerPage} getAllPokemon={getAllPokemon} />
       
     </div>
   );
