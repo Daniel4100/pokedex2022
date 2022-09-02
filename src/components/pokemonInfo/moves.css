@@ -1,0 +1,33 @@
+.moves__container{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 1em;
+    margin-top: 1em;
+}
+
+.move{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: .7em;
+    border-radius: 0.5em;
+    background-color: rgba(83, 83, 83, 0.247);
+    box-shadow: 0 0.25em 0.5em rgba(0,0,0,0.1);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-size: .7rem;
+}
+
+.move:hover{
+    transform: scale(1.05);
+}
+
+@media (min-width: 768px) {
+    
+    .move{
+        font-size: .8rem;
+    }
+
+}

@@ -1,8 +1,7 @@
 import axios from "axios";
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
-import { NavLink, Outlet, Route, Routes, useNavigate, useParams } from "react-router-dom";
-import AbautPoke from "./AbautPoke";
+import { NavLink, Outlet, useNavigate, useParams } from "react-router-dom";
 import "./pokemonDetails.css"
 
 const PokemonDetails = () => {
@@ -22,7 +21,7 @@ const PokemonDetails = () => {
         setLoading(false);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [name]);
 
   console.log(pokemon)
 

@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 
 const AbautPoke = () => {
   const [abautPoke, setAbautPoke] = useState()
+  const [text, setText] = useState()
 
   const {name} = useParams()
   
@@ -16,13 +17,22 @@ const AbautPoke = () => {
         setLoading(false);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [name]);
+
+  useEffect(() => {
+    axios.get(`https://pokeapi.co/api/v2/pokemon-species/${name}/`)
+    .then(res => setText(res.data.flavor_text_entries[0].flavor_text))
+    .catch(err => console.log(err))
+  }, [name])
+  
+  console.log(text)
+
   console.log(abautPoke)
 
   return (
     <div className='about__pokemon'>
       <div className='about__pokemon-text'>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum accusamus voluptatem facere repellendus quaerat sit unde Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi quibusdam optio eius architecto. Architecto quod harum facere fuga voluptatibus, magni tenetur odio! Aut quae temporibus asperiores iste, perferendis ad modi? </p>
+        <p>{text && text}</p>
       </div>
       <section className='about__measurement'>
         <article className='border__right'>
@@ -44,7 +54,7 @@ const AbautPoke = () => {
       </section>
       <div className="about__icons-container">
             {abautPoke?.types.map((type) => (
-              <div whileHover={{scale: 1.04 }} key={type.type.url} className="about__icons-container-singular">
+              <div  key={type.type.url} className="about__icons-container-singular">
                 
                   <img
                   src={`./media/${type.type.name}.svg`}

@@ -55,13 +55,13 @@
   border-radius: 25px 25px 0px 0px;
   width: 100%;
   padding: 2em 0.7em;
-  ;
 }
 .navbar {
   width: 100%;
-  max-width: 1400px;
   overflow: auto;
+  position: relative;
   display: flex;
+  z-index: 5;
   justify-content: center;
 }
 .navbar ul {
@@ -124,20 +124,20 @@ article {
 .opaque {
   color: grey;
 }
-.about__icons-container{
+.about__icons-container {
   width: 100%;
   display: flex;
   justify-content: space-around;
   max-width: 330px;
 }
-.about__icons-container-singular{
+.about__icons-container-singular {
   display: flex;
   align-items: center;
   width: 45%;
   height: 44px;
 }
 
-.about__icon-text{
+.about__icon-text {
   background-color: rgb(91, 92, 92);
   height: 100%;
   width: 100%;
@@ -168,8 +168,8 @@ article {
     height: 170%;
     z-index: -1;
     filter: blur(100px);
-}
-  .pokemon-img-details{
+  }
+  .pokemon-img-details {
     height: 270px;
     position: absolute;
     bottom: -60px;
