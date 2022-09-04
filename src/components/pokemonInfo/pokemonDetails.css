@@ -15,15 +15,25 @@
   position: relative;
 }
 .back-details {
-  position: absolute;
+  position: fixed;
   left: 1em;
   top: 1em;
+  height: 2em;
+  width: 2em;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #ffffff38;
+  cursor: pointer;
 }
 .back-details button {
   border: none;
   color: aliceblue;
   font-size: 1em;
   background-color: rgba(255, 255, 255, 0);
+  cursor: pointer;
 }
 .pokemon-title-details {
   position: absolute;
@@ -45,12 +55,12 @@
   height: 180px;
   position: absolute;
   bottom: -40px;
-  z-index: 2;
+  z-index: 2100;
   transition: linear 0.2s;
 }
 
 .card__body-details {
-  background-color: rgba(2, 2, 2, 0.205);
+  background-color: rgba(2, 2, 2, 0.342);
   min-height: 60%;
   border-radius: 25px 25px 0px 0px;
   width: 100%;
@@ -162,9 +172,13 @@ article {
   .card__body-details {
     padding: 2em 1em;
   }
+  .back-details{
+    top: 2em;
+    left: 2em;
+  }
   .bg__details {
     position: absolute;
-    width: 30%;
+    width: 50%;
     height: 170%;
     z-index: -1;
     filter: blur(100px);

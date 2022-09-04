@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import "./moves.css"
+import { motion } from 'framer-motion'
 
 const MovesPoke = () => {
   const [moves, setMoves] = useState()
@@ -21,7 +22,8 @@ const MovesPoke = () => {
 
 
   return (
-    <div className='moves__container'>
+    <motion.div initial={{opacity: 0, x: -100}}
+    animate={{opacity: 1, x: 0,}} className='moves__container'>
 
       {moves && moves.map(move => (
         <div key={move.move.name} className='move'>
@@ -29,7 +31,7 @@ const MovesPoke = () => {
         </div>
   ))
 }
-  </div>
+  </motion.div>
   )
 }
 

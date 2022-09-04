@@ -16,9 +16,9 @@ const PokeCard = ({ url, item }) => {
       .get(url)
       .then((res) => {
         setPokemon(res.data);
-        setTimeout(() => {
+        // setTimeout(() => {
           setLoading(false);
-        }, 3000);
+        // }, 2000);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -47,7 +47,8 @@ const PokeCard = ({ url, item }) => {
                 alt="loader"
               />
             ) : (
-              <img
+              <motion.img
+                layout
                 src={pokemon?.sprites.other["official-artwork"].front_default ? (pokemon?.sprites.other["official-artwork"].front_default) : './media/imageNotFound.png' }
                 className="pokemon-img"
                 alt="logo"

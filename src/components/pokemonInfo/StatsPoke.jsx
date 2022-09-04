@@ -3,6 +3,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./statsPoke.css";
+import { motion } from "framer-motion";
 
 const StatsPoke = () => {
   const [pokeStats, setPokeStats] = useState();
@@ -19,7 +20,8 @@ const StatsPoke = () => {
   console.log(pokeStats);
 
   return (
-    <div className="stats-container__pokemon">
+    <motion.div initial={{opacity: 0, x: -100}}
+    animate={{opacity: 1, x: 0,}} className="stats-container__pokemon">
       <div className="stats-pokemon">
         {pokeStats &&
           pokeStats.stats.map((stat) => (
@@ -41,7 +43,7 @@ const StatsPoke = () => {
             </div>
           ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PokeCard from "../PokeCard";
 import './evolutionpoke.css';
+import { motion } from "framer-motion";
 
 const item = {
   hidden: { opacity: 0 },
@@ -11,9 +12,7 @@ const item = {
 
 const EvolutionPoke = () => {
   const [evolutions, setEvolutions] = useState();
-  // const [namepokemon, setNamePokemon] = useState();
-  const [loading, setLoading] = useState(true);
-  // const [pokemon, setPokemon] = useState()
+  
   const [pokemonsGroup, setPokemonsGroup] = useState()
 
   const { name } = useParams();
@@ -34,14 +33,22 @@ const EvolutionPoke = () => {
         (res.data.chain)
         const group = []
         group.push(res.data.chain.species.name)
-        group.push(res.data.chain.evolves_to[0].species.name)
-        group.push(res.data.chain.evolves_to[0].evolves_to[0].species.name)
+        console.log(res.data)
+        if (res.data.chain['evolves_to'].length != 0){
+          group.push(res.data.chain.evolves_to[0].species.name)
+          if (res.data.chain.evolves_to[0].evolves_to.length != 0) {
+            group.push(res.data.chain.evolves_to[0].evolves_to[0].species.name)
+          }
+        }
+        
+        
         setPokemonsGroup(group) })
 
       .catch((err) => console.log(err));
   }, [evolutions]);
 
   console.log(pokemonsGroup)
+  console.log(evolutions)
 
   
   
@@ -52,7 +59,8 @@ const EvolutionPoke = () => {
   const handleClick = () => navigate("/pokedex");
 
   return (
-    <div className="evolutions__container"> 
+    <motion.div initial={{opacity: 0, x: -100}}
+    animate={{opacity: 1, x: 0,}}  className="evolutions__container"> 
     <div className="pokemons__container">
       {
         pokemonsGroup?.map((pokemon, index) => (
@@ -61,7 +69,7 @@ const EvolutionPoke = () => {
       
       }
     </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -2,7 +2,14 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { NavLink, Outlet, useNavigate, useParams } from "react-router-dom";
-import "./pokemonDetails.css"
+import "./pokemonDetails.css";
+
+const variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+};
+
+
 
 const PokemonDetails = () => {
   const [pokemon, setPokemon] = useState();
@@ -23,25 +30,30 @@ const PokemonDetails = () => {
       .catch((err) => console.log(err));
   }, [name]);
 
-  console.log(pokemon)
+  console.log(pokemon);
 
-  const handleClick = () => navigate('/pokedex')
+  const handleClick = () => navigate("/pokedex");
 
   return (
-    <div className="container__details">
+    <motion.div layout variants={variants} initial='hidden'  animate='visible'  className="container__details">
       {/* <span className="pokemon-id">
         #<b>{pokemon?.id}</b>
-      </span> */}
+      </span> */}<div className="back-details">
+          <button onClick={handleClick}>
+            <i className="fas fa-chevron-left"></i>
+          </button>
+        </div>
+
       <div className="card__details">
-        <div className={`card__head-details`}>
-          <div className="back-details">
-            <button onClick={handleClick}><i className="fas fa-chevron-left"></i></button>
-          </div>
-        <div className="pokemon-title-details">
+        
+        <motion.div layout className={`card__head-details`}>
+          <div className="pokemon-title-details">
             <h4>{pokemon?.name}</h4>
           </div>
           <div className="card__headimagecontainer-details">
-            <div className={`bg__details bg${pokemon?.types[0].type.name}`}></div>
+            <div
+              className={`bg__details bg${pokemon?.types[0].type.name}`}
+            ></div>
             {loading ? (
               <img
                 src={`./media/pokeball.png`}
@@ -49,7 +61,13 @@ const PokemonDetails = () => {
                 alt="loader"
               />
             ) : (
-              <img
+              <motion.img
+                
+                initial={{ x: 100,
+                  opacity: 0 }}
+                animate={{ x: 0, 
+                  opacity: 1 }}
+                layout
                 src={
                   pokemon?.sprites.other["official-artwork"].front_default
                     ? pokemon?.sprites.other["official-artwork"].front_default
@@ -60,23 +78,31 @@ const PokemonDetails = () => {
               />
             )}
           </div>
-        </div>
-        <div className="card__body-details">
+        </motion.div>
+        <motion.div  className="card__body-details">
           <nav className="navbar">
-              <ul>
-                <li><NavLink to={`/pokedex/${name}/about`}>About</NavLink></li>
-                <li><NavLink to={`/pokedex/${name}/stats`}>Stats</NavLink></li>
-                <li><NavLink to={`/pokedex/${name}/moves`}>Moves</NavLink></li>
-                <li><NavLink to={`/pokedex/${name}/evolutions`}>Evolutions</NavLink></li>
-                <li><NavLink to={`/pokedex/${name}/galery`}>Galery</NavLink></li>
-              </ul>
+            <ul>
+              <li>
+                <NavLink to={`/pokedex/${name}/about`}>About</NavLink>
+              </li>
+              <li>
+                <NavLink to={`/pokedex/${name}/stats`}>Stats</NavLink>
+              </li>
+              <li>
+                <NavLink to={`/pokedex/${name}/moves`}>Moves</NavLink>
+              </li>
+              <li>
+                <NavLink to={`/pokedex/${name}/evolutions`}>Evolutions</NavLink>
+              </li>
+              <li>
+                <NavLink to={`/pokedex/${name}/galery`}>Galery</NavLink>
+              </li>
+            </ul>
           </nav>
-          <Outlet/>
-
-
-        </div>
+          <Outlet />
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

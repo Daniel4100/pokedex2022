@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 const AbautPoke = () => {
   const [abautPoke, setAbautPoke] = useState()
@@ -21,7 +22,10 @@ const AbautPoke = () => {
 
   useEffect(() => {
     axios.get(`https://pokeapi.co/api/v2/pokemon-species/${name}/`)
-    .then(res => setText(res.data.flavor_text_entries[0].flavor_text))
+    .then(res => {
+      const i = res.data.flavor_text_entries.findIndex(e => e.language.name === 'en')
+      setText(res.data.flavor_text_entries[i].flavor_text)
+    })
     .catch(err => console.log(err))
   }, [name])
   
@@ -30,7 +34,11 @@ const AbautPoke = () => {
   console.log(abautPoke)
 
   return (
-    <div className='about__pokemon'>
+    <motion.div 
+      
+      initial={{opacity: 0, x: -100}}
+      animate={{opacity: 1, x: 0}}
+    className='about__pokemon'>
       <div className='about__pokemon-text'>
         <p>{text && text}</p>
       </div>
@@ -68,7 +76,7 @@ const AbautPoke = () => {
               </div>
             ))}
           </div>
-    </div>
+    </motion.div>
   )
 }
 
