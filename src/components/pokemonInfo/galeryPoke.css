@@ -15,16 +15,20 @@
     border: 1px solid rgba(255, 255, 255, 0.24);
     background-color: rgba(240, 248, 255, 0.103);
     border-radius: 20px;
+    padding: 5px;
 }
 .galery__conatiner-box1{
     width: 100%;
     max-width: 350px;
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     align-items: center;
     margin-bottom: 3em;
+    gap: 1em;
+    justify-content: center;
     flex-wrap: wrap;
 }
+
 
 .galery__conatiner-box1 img{
     width: 50px;
@@ -56,4 +60,13 @@
 
 .galery__conatiner-box3 img{
     height: 160px;
+}
+
+.text__galery{
+    font-size: .7rem;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    margin-bottom: 1em;
+    color: rgba(240, 248, 255, 0.747);
+
 }

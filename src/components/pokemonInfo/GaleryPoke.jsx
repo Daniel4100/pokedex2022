@@ -28,6 +28,7 @@ const GaleryPoke = () => {
     >
       {pokeGalery && (
         <div className="galery__container">
+          <p className="text__galery">animations</p>
           <div className="galery__conatiner-box1">
             <img
               src={
@@ -58,9 +59,11 @@ const GaleryPoke = () => {
               alt=""
             />
           </div>
+          <p className="text__galery">dream world</p>
           <div className="galery__conatiner-box2">
             <img src={pokeGalery.other.dream_world.front_default} alt="" />
           </div>
+          <p className="text__galery">otros</p>
           <div className="galery__conatiner-box3">
             <img src={pokeGalery.other.home.front_default} alt="" />
             <img src={pokeGalery.other.home.front_shiny} alt="" />

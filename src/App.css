@@ -1,28 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 /* ===== Scrollbar CSS ===== */
-  /* Firefox */
-  
+/* Firefox */
 
-  /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
-    width: 8px;
-    height: 0px
-  }
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 0px;
+}
 
-  *::-webkit-scrollbar-track {
-    background: #383838;
-  }
+*::-webkit-scrollbar-track {
+  background: #383838;
+}
 
-  *::-webkit-scrollbar-thumb {
-    background-color: #636363;
-    border-radius: 10px;
-    border: 0px none #ffffff;
-  }
+*::-webkit-scrollbar-thumb {
+  background-color: #636363;
+  border-radius: 10px;
+  border: 0px none #ffffff;
+}
 
 * {
   box-sizing: border-box;
   scrollbar-width: none;
-    scrollbar-color: #636363 #383838;
+  scrollbar-color: #636363 #383838;
 }
 
 body {
@@ -118,7 +117,7 @@ body {
   background-color: rgba(88, 87, 87, 0.336);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  
+
   padding: 3em 1em 5em 1em;
   position: fixed;
   right: 0em;
@@ -215,6 +214,27 @@ body {
 .pokedex__form {
   margin-bottom: 3em;
   padding: 0em 1em;
+  display: flex;
+  gap: 1em;
+}
+.pokedex__form input {
+  width: 300px;
+  height: 35px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 6px;
+  /* box-shadow: rgb(255, 255, 255) 0px 10px 15px -3px,
+    rgb(255, 255, 255) 0px 4px 6px -2px; */
+}
+.pokedex__form select {
+  width: 150px;
+  padding: 0px 20px;
+  height: 35px;
+  border: none;
+  border-radius: 6px;
+  /* box-shadow: rgb(255, 254, 254) 0px 10px 15px -3px,
+    rgb(0 0 0 / 5%) 0px 4px 6px -2px; */
+  cursor: pointer;
 }
 .card {
   width: 100%;
