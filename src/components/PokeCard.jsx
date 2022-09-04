@@ -3,7 +3,7 @@ import axios from "axios";
 import {useNavigate} from "react-router"
 import {motion} from 'framer-motion'
 
-const PokeCard = ({ url, item }) => {
+const PokeCard = ({ url, item, name }) => {
   const [pokemon, setPokemon] = useState();
   const [loading, setLoading] = useState(true);
 
@@ -16,9 +16,9 @@ const PokeCard = ({ url, item }) => {
       .get(url)
       .then((res) => {
         setPokemon(res.data);
-        // setTimeout(() => {
+        setTimeout(() => {
           setLoading(false);
-        // }, 2000);
+        }, 1000);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -29,7 +29,7 @@ const PokeCard = ({ url, item }) => {
   }
   // console.log(pokemon)
   return (
-    <motion.div layout variants={item} whileHover={{scale: 1.06}} onClick={handleClicks} className="container">
+    <motion.div layout variants={item} whileHover={{scale: 1.06}} onClick={handleClicks} className={`container ${pokemon?.id == name && 'pokeEvolution'}`}>
       <span className="pokemon-id">
             #<b>{pokemon?.id}</b>
           </span>

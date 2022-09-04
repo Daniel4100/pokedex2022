@@ -118,6 +118,7 @@ body {
   background-color: rgba(88, 87, 87, 0.336);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  
   padding: 3em 1em 5em 1em;
   position: fixed;
   right: 0em;

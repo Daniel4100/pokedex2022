@@ -1,5 +1,5 @@
 .container__details {
-  width: 100%;
+  width: 100vw;
   min-height: 100vh;
 }
 .card__details {
@@ -139,6 +139,7 @@ article {
   display: flex;
   justify-content: space-around;
   max-width: 330px;
+  margin-bottom: 2em;
 }
 .about__icons-container-singular {
   display: flex;
@@ -165,6 +166,41 @@ article {
   z-index: 3;
 }
 
+.about__pokemon-abilities {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+.about__pokemon-abilities p {
+  font-size: 1rem;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.562);
+}
+.about__pokemon-abilities-container {
+  display: flex;
+  width: 100%;
+  max-width: 400px;
+  justify-content: space-around;
+}
+.ability {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7em;
+  border-radius: 0.5em;
+  background-color: rgba(83, 83, 83, 0.247);
+  box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  font-size: 0.7rem;
+}
+.ability:hover{
+  transform: scale(1.1);
+}
+
 @media (min-width: 768px) {
   .navbar ul {
     font-size: 1rem;
@@ -172,7 +208,7 @@ article {
   .card__body-details {
     padding: 2em 1em;
   }
-  .back-details{
+  .back-details {
     top: 2em;
     left: 2em;
   }

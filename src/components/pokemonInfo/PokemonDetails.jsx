@@ -25,7 +25,9 @@ const PokemonDetails = () => {
       .get(URL)
       .then((res) => {
         setPokemon(res.data);
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
       })
       .catch((err) => console.log(err));
   }, [name]);
@@ -35,7 +37,7 @@ const PokemonDetails = () => {
   const handleClick = () => navigate("/pokedex");
 
   return (
-    <motion.div layout variants={variants} initial='hidden'  animate='visible'  className="container__details">
+    <motion.div layout  variants={variants} initial='hidden'  animate='visible'  className="container__details">
       {/* <span className="pokemon-id">
         #<b>{pokemon?.id}</b>
       </span> */}<div className="back-details">
@@ -46,7 +48,7 @@ const PokemonDetails = () => {
 
       <div className="card__details">
         
-        <motion.div layout className={`card__head-details`}>
+        <motion.div  className={`card__head-details`}>
           <div className="pokemon-title-details">
             <h4>{pokemon?.name}</h4>
           </div>
@@ -67,7 +69,7 @@ const PokemonDetails = () => {
                   opacity: 0 }}
                 animate={{ x: 0, 
                   opacity: 1 }}
-                layout
+                
                 src={
                   pokemon?.sprites.other["official-artwork"].front_default
                     ? pokemon?.sprites.other["official-artwork"].front_default
@@ -79,7 +81,7 @@ const PokemonDetails = () => {
             )}
           </div>
         </motion.div>
-        <motion.div  className="card__body-details">
+        <div  className="card__body-details">
           <nav className="navbar">
             <ul>
               <li>
@@ -100,7 +102,7 @@ const PokemonDetails = () => {
             </ul>
           </nav>
           <Outlet />
-        </motion.div>
+        </div>
       </div>
     </motion.div>
   );

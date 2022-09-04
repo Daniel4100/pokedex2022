@@ -64,7 +64,9 @@ const EvolutionPoke = () => {
     <div className="pokemons__container">
       {
         pokemonsGroup?.map((pokemon, index) => (
-          <PokeCard key={index} url={`https://pokeapi.co/api/v2/pokemon/${pokemon}/`} />
+          
+            <PokeCard name={name} key={index} url={`https://pokeapi.co/api/v2/pokemon/${pokemon}/`} />
+          
         ))
       
       }

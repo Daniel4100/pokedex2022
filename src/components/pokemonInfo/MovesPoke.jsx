@@ -22,7 +22,7 @@ const MovesPoke = () => {
 
 
   return (
-    <motion.div initial={{opacity: 0, x: -100}}
+    <motion.div initial={{opacity: 1, x: -100}}
     animate={{opacity: 1, x: 0,}} className='moves__container'>
 
       {moves && moves.map(move => (
