@@ -30,7 +30,7 @@ const Home = () => {
         <h1>hi triner!</h1>
         <p>to get started, put your trainer name</p>
         <form onSubmit={handleSubmit}>
-          <input required maxLength={10} id="name" type="text" placeholder="0 - 10 characters" />
+          <input required maxLength={10} id="name" type="text" placeholder="name" />
           <button className="custom-btn btn-11">catch them all</button>
         </form>
         <img className="home__png" src="./media/home.png" alt="" />
