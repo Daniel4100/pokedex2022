@@ -30,7 +30,7 @@ const PokeCard = ({ url, item, name }) => {
   // console.log(pokemon)
   return (
     <motion.div layout variants={item} whileHover={{scale: 1.06}} onClick={handleClicks} className={`container ${pokemon?.id == name && 'pokeEvolution'}`}>
-      <span className="pokemon-id">
+      <span className={`pokemon-id ${pokemon?.types[0].type.name}`}>
             #<b>{pokemon?.id}</b>
           </span>
       <motion.div  className="card">

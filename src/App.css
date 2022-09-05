@@ -424,7 +424,8 @@ body {
 }
 .pokemon-id {
   position: absolute;
-  background-color: aqua;
+  box-shadow: none;
+  border-radius: 5px;
   padding: 0em 0.5em;
   left: -10px;
   top: 10px;
