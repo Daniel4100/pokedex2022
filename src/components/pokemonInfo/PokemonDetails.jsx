@@ -65,9 +65,9 @@ const PokemonDetails = () => {
             ) : (
               <motion.img
                 
-                initial={{ x: 100,
+                initial={{ scale: 0.5 ,
                   opacity: 0 }}
-                animate={{ x: 0, 
+                animate={{ scale: 1, 
                   opacity: 1 }}
                 
                 src={
