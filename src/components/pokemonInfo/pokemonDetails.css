@@ -52,7 +52,7 @@
   filter: blur(100px);
 }
 .pokemon-img-details {
-  height: 180px;
+  height: 230px;
   position: absolute;
   bottom: -40px;
   z-index: 2100;
