@@ -4,7 +4,7 @@
 
 /* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-  width: 8px;
+  width: 2px;
   height: 0px;
 }
 
@@ -13,7 +13,7 @@
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #636363;
+  background-color: #6d6c6c;
   border-radius: 10px;
   border: 0px none #ffffff;
 }
@@ -104,7 +104,7 @@ body {
   border: none;
   border-radius: 50%;
   padding: 0;
-  bottom: 2em;
+  top: 1em;
   right: 1em;
 }
 .configurations:active {
@@ -118,11 +118,11 @@ body {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 
-  padding: 3em 1em 5em 1em;
+  padding: 3em 1em 1em 1em;
   position: fixed;
   right: 0em;
   top: 0em;
-  height: 100vh;
+  height: 100%;
   /* width: 23vw; */
   z-index: 1001;
   max-width: 300px;
@@ -216,9 +216,10 @@ body {
   padding: 0em 1em;
   display: flex;
   gap: 1em;
+  flex-wrap: wrap;
 }
 .pokedex__form input {
-  width: 300px;
+  max-width: 300px;
   height: 35px;
   padding: 0 20px;
   border: none;
@@ -579,8 +580,13 @@ h4 {
     width: 200px;
     height: 370px;
   }
+  .configurations{
+    top: 2em;
+    right: 1em;
+  }
   .configurations__toggle {
     width: 300px;
+    
   }
   .card {
     width: 100%;

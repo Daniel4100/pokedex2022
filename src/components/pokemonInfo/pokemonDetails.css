@@ -207,6 +207,7 @@ article {
   }
   .card__body-details {
     padding: 2em 1em;
+    width: 100vw;
   }
   .back-details {
     top: 2em;
